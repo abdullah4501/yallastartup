@@ -1,3 +1,6 @@
+import { ArrowDown, ArrowDownRight, ArrowUpRight, Sparkles } from "lucide-react";
+import ScrollAnimations from "./scroll-animations";
+
 const services = [
   {
     number: "01",
@@ -32,9 +35,19 @@ const steps = [
   ["04", "Scale", "We stay close with finance and fundraising support."],
 ];
 
+const marqueeItems = [
+  "Go-to-market",
+  "Business planning",
+  "Valuation",
+  "Pitch narrative",
+  "Fundraising",
+  "Virtual CFO",
+];
+
 export default function Home() {
   return (
     <main>
+      <ScrollAnimations />
       <div className="topline">
         <span>Built in the UAE</span>
         <span>Strategy · Finance · Capital</span>
@@ -43,8 +56,7 @@ export default function Home() {
       <header className="nav shell">
         <a className="brand" href="#top" aria-label="Yalla Startup home">
           <span className="brand-arabic">يلا</span>
-          <span className="brand-name">YALLA</span>
-          <span className="brand-sub">startup</span>
+          <span className="brand-name">YALLA Startup</span>
         </a>
         <nav aria-label="Primary navigation">
           <a href="#services">What we build</a>
@@ -52,7 +64,7 @@ export default function Home() {
           <a href="#founders">Founders</a>
         </nav>
         <a className="nav-cta" href="#contact">
-          Let&apos;s talk <span aria-hidden="true">↗</span>
+          Let&apos;s talk <span aria-hidden="true"><ArrowUpRight className="inline-icon" /></span>
         </a>
       </header>
 
@@ -68,19 +80,21 @@ export default function Home() {
             We help startups turn potential into a business ready for market, capital and scale.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#services">Explore the deliverables <span>↓</span></a>
-            <a className="text-link" href="#founders">Meet your advisors <span>↗</span></a>
+            <a className="button button-primary" href="#services">Explore the deliverables <span><ArrowDown className="inline-icon" aria-hidden="true" /></span></a>
+            <a className="text-link" href="#founders">Meet your advisors <span><ArrowUpRight className="inline-icon" aria-hidden="true" /></span></a>
           </div>
         </div>
 
         <div className="hero-stage" aria-label="Startup growth from idea to capital">
           <div className="stage-orbit orbit-one" />
           <div className="stage-orbit orbit-two" />
-          <div className="stage-core">
-            <span className="stage-kicker">YALLA / UAE</span>
-            <strong>Idea</strong>
-            <span className="stage-arrow">↘</span>
-            <strong>Scale</strong>
+          <div className="stage-core-rotator">
+            <div className="stage-core">
+              <span className="stage-kicker">YALLA / UAE</span>
+              <strong>Idea</strong>
+              <ArrowDownRight className="stage-arrow" aria-hidden="true" />
+              <strong>Scale</strong>
+            </div>
           </div>
           <div className="stage-chip chip-one"><span>01</span> Strategy</div>
           <div className="stage-chip chip-two"><span>02</span> Finance</div>
@@ -92,18 +106,22 @@ export default function Home() {
         <div className="hero-foot">
           <p>UAE insight.<br />Global ambition.</p>
           <p>Founder thinking.<br />CFO discipline.</p>
-          <div className="scroll-cue"><span>Scroll to discover</span><i>↓</i></div>
+          <div className="scroll-cue"><i><ArrowDown aria-hidden="true" /></i></div>
         </div>
       </section>
 
       <section className="signal-strip" aria-label="Yalla Startup capabilities">
-        <div>
-          <span>Go-to-market</span><b>✦</b>
-          <span>Business planning</span><b>✦</b>
-          <span>Valuation</span><b>✦</b>
-          <span>Pitch narrative</span><b>✦</b>
-          <span>Fundraising</span><b>✦</b>
-          <span>Virtual CFO</span>
+        <div className="marquee-track">
+          {[0, 1].map((copy) => (
+            <div className="marquee-group" aria-hidden={copy === 1} key={copy}>
+              {marqueeItems.map((item) => (
+                <div className="marquee-item" key={`${copy}-${item}`}>
+                  <span>{item}</span>
+                  <Sparkles className="marquee-icon" aria-hidden="true" />
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -123,7 +141,7 @@ export default function Home() {
             <article className="service-card" key={service.number}>
               <div className="card-top">
                 <span className="service-number">{service.number}</span>
-                <span className="service-arrow">↗</span>
+                <span className="service-arrow"><ArrowUpRight aria-hidden="true" /></span>
               </div>
               <p className="service-tag">{service.tag}</p>
               <h3>{service.title}</h3>
@@ -143,13 +161,13 @@ export default function Home() {
           <span className="addon-index">A / 01</span>
           <h3>Fundraising support</h3>
           <p>Investor targeting, outreach preparation, data-room readiness and support through the conversations that count.</p>
-          <span className="addon-mark">↗</span>
+          <span className="addon-mark"><ArrowUpRight aria-hidden="true" /></span>
         </div>
         <div className="addon-card sand-card">
           <span className="addon-index">A / 02</span>
           <h3>Virtual CFO</h3>
           <p>Senior financial thinking without the full-time overhead—planning, reporting, cash visibility and better board-level decisions.</p>
-          <span className="addon-mark">↗</span>
+          <span className="addon-mark"><ArrowUpRight aria-hidden="true" /></span>
         </div>
       </section>
 
@@ -189,7 +207,7 @@ export default function Home() {
               <p className="founder-role">Founder · Venture & strategy</p>
               <h3>Nabeil Schaik</h3>
               <p>Fellow Chartered Accountant and entrepreneur with 18+ years across investment banking, corporate finance, digital transformation and startup acceleration.</p>
-              <a href="https://www.linkedin.com/in/nabeilschaik/" target="_blank" rel="noreferrer">LinkedIn profile <span>↗</span></a>
+              <a href="https://www.linkedin.com/in/nabeilschaik/" target="_blank" rel="noreferrer">LinkedIn profile <span><ArrowUpRight className="inline-icon" aria-hidden="true" /></span></a>
             </div>
           </article>
 
@@ -199,7 +217,7 @@ export default function Home() {
               <p className="founder-role">Founder · Finance & capital</p>
               <h3>Moosa Raza</h3>
               <p>Chartered Accountant with deep UAE banking experience spanning treasury risk, capital management, regulatory reporting and financial governance.</p>
-              <a href="https://www.linkedin.com/in/moosa-raza-aca-110m/" target="_blank" rel="noreferrer">LinkedIn profile <span>↗</span></a>
+              <a href="https://www.linkedin.com/in/moosa-raza-aca-110m/" target="_blank" rel="noreferrer">LinkedIn profile <span><ArrowUpRight className="inline-icon" aria-hidden="true" /></span></a>
             </div>
           </article>
         </div>
@@ -212,7 +230,7 @@ export default function Home() {
           <h2>Ready to make the<br />business <em>make sense?</em></h2>
           <p>Tell us where you are, where you want to go and what is getting in the way. We will help you find the clearest route forward.</p>
           <div className="contact-actions">
-            <a className="button button-light" href="https://www.linkedin.com/in/nabeilschaik/" target="_blank" rel="noreferrer">Start a conversation <span>↗</span></a>
+            <a className="button button-light" href="https://www.linkedin.com/in/nabeilschaik/" target="_blank" rel="noreferrer">Start a conversation <span><ArrowUpRight className="inline-icon" aria-hidden="true" /></span></a>
             <span>Based in the United Arab Emirates<br />Working with founders globally</span>
           </div>
         </div>
