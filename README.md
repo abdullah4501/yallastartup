@@ -40,6 +40,18 @@ npm run build
 npm test
 ```
 
+## Static Hostinger deployment
+
+Create a static build for Hostinger's `public_html` file hosting:
+
+```powershell
+npm run build:hostinger
+```
+
+Upload the contents of `hostinger-dist` directly into `public_html`. This is a
+separate build path; the existing Vinext development and production commands
+remain unchanged.
+
 The main site files are:
 
 - `app/page.tsx` — page content and structure
