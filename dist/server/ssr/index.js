@@ -3144,7 +3144,7 @@ var client_references_default = {
 		};
 	},
 	"f2d0a8d0185e": async () => {
-		const m = await import("./assets/scroll-animations-Baf0LOtu.js");
+		const m = await import("./assets/scroll-animations-BNvyCDEZ.js");
 		return { get "default"() {
 			return m["default"];
 		} };

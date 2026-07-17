@@ -14,21 +14,20 @@ var revealSelector = [
 	".founder-lead > p",
 	".founder-card",
 	".contact-content > p",
-	".contact-actions",
-	".footer-inner > *"
+	".contact-actions"
 ].join(",");
 var staggerGroups = [
 	".service-card",
 	".addon-card",
 	".step",
-	".founder-card",
-	".footer-inner > *"
+	".founder-card"
 ];
 function ScrollAnimations() {
 	useEffect(() => {
 		const root = document.documentElement;
 		const revealItems = Array.from(document.querySelectorAll(revealSelector));
 		const stage = document.querySelector(".hero-stage");
+		const footer = document.querySelector(".footer");
 		const stageCoreRotator = document.querySelector(".stage-core-rotator");
 		const timers = [];
 		let scrollFrame = null;
@@ -56,6 +55,7 @@ function ScrollAnimations() {
 		});
 		revealItems.forEach((item) => item.classList.add("reveal-on-scroll"));
 		stage?.classList.add("stage-reveal");
+		footer?.classList.add("footer-reveal");
 		root.classList.add("motion-ready");
 		const reveal = (item) => {
 			item.classList.add("is-visible");
@@ -68,6 +68,7 @@ function ScrollAnimations() {
 		if (!("IntersectionObserver" in window)) {
 			revealItems.forEach(reveal);
 			stage?.classList.add("is-visible");
+			footer?.classList.add("is-visible");
 			return () => {
 				cleanupScrollRotation();
 				timers.forEach((timer) => window.clearTimeout(timer));
@@ -78,7 +79,7 @@ function ScrollAnimations() {
 			entries.forEach((entry) => {
 				if (!entry.isIntersecting) return;
 				const item = entry.target;
-				if (item === stage) item.classList.add("is-visible");
+				if (item === stage || item === footer) item.classList.add("is-visible");
 				else reveal(item);
 				observer.unobserve(item);
 			});
@@ -88,6 +89,7 @@ function ScrollAnimations() {
 		});
 		revealItems.forEach((item) => observer.observe(item));
 		if (stage) observer.observe(stage);
+		if (footer) observer.observe(footer);
 		return () => {
 			observer.disconnect();
 			cleanupScrollRotation();
