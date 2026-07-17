@@ -240,8 +240,7 @@ export default function Home() {
         <div className="shell footer-inner">
           <a className="brand footer-brand" href="#top">
             <span className="brand-arabic">يلا</span>
-            <span className="brand-name">YALLA</span>
-            <span className="brand-sub">startup</span>
+            <span className="brand-name">YALLA startup</span>
           </a>
           <p>Strategy to story. Numbers to narrative.<br />Built for what comes next.</p>
           <div className="footer-links">

@@ -17,7 +17,6 @@ const revealSelector = [
   ".founder-card",
   ".contact-content > p",
   ".contact-actions",
-  ".footer-inner > *",
 ].join(",");
 
 const staggerGroups = [
@@ -25,7 +24,6 @@ const staggerGroups = [
   ".addon-card",
   ".step",
   ".founder-card",
-  ".footer-inner > *",
 ];
 
 export default function ScrollAnimations() {
@@ -35,6 +33,7 @@ export default function ScrollAnimations() {
       document.querySelectorAll<HTMLElement>(revealSelector),
     );
     const stage = document.querySelector<HTMLElement>(".hero-stage");
+    const footer = document.querySelector<HTMLElement>(".footer");
     const stageCoreRotator = document.querySelector<HTMLElement>(".stage-core-rotator");
     const timers: number[] = [];
     let scrollFrame: number | null = null;
@@ -71,6 +70,7 @@ export default function ScrollAnimations() {
 
     revealItems.forEach((item) => item.classList.add("reveal-on-scroll"));
     stage?.classList.add("stage-reveal");
+    footer?.classList.add("footer-reveal");
     root.classList.add("motion-ready");
 
     const reveal = (item: HTMLElement) => {
@@ -85,6 +85,7 @@ export default function ScrollAnimations() {
     if (!("IntersectionObserver" in window)) {
       revealItems.forEach(reveal);
       stage?.classList.add("is-visible");
+      footer?.classList.add("is-visible");
       return () => {
         cleanupScrollRotation();
         timers.forEach((timer) => window.clearTimeout(timer));
@@ -98,7 +99,7 @@ export default function ScrollAnimations() {
           if (!entry.isIntersecting) return;
 
           const item = entry.target as HTMLElement;
-          if (item === stage) {
+          if (item === stage || item === footer) {
             item.classList.add("is-visible");
           } else {
             reveal(item);
@@ -111,6 +112,7 @@ export default function ScrollAnimations() {
 
     revealItems.forEach((item) => observer.observe(item));
     if (stage) observer.observe(stage);
+    if (footer) observer.observe(footer);
 
     return () => {
       observer.disconnect();
