@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 :root {
   --ink: #071b1f;
   --ink-soft: #0e2b2f;
@@ -593,8 +591,6 @@ h1 em::after {
   .mobile-menu-close svg { width: 19px; height: 19px; }
   .mobile-menu-nav { display: grid !important; gap: 0 !important; padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
   .mobile-menu-nav a {
-    display: grid;
-    grid-template-columns: 35px 1fr;
     align-items: center;
     min-height: 49px;
     padding: 0 !important;

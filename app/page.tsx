@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowDownRight, ArrowUpRight, Check, LockKeyhole, MapPin, Phone, Sparkles } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, LockKeyhole, MapPin, Phone, Sparkles } from "lucide-react";
 import Countdown from "./components/countdown";
 import { ResourceGateForm } from "./components/lead-forms";
 import SiteFooter from "./components/site-footer";

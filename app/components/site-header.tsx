@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import Link from "next/link";
 import { services } from "../site-config";
 
 export default function SiteHeader() {
@@ -61,28 +62,29 @@ export default function SiteHeader() {
         <span>United Arab Emirates · Saudi Arabia</span>
       </div>
       <header className="nav shell">
-        <a className="brand" href="/" aria-label="Yalla Startup Venture Studio home">
+        <Link className="brand" href="/" aria-label="Yalla Startup Venture Studio home">
           <span className="brand-arabic">يلا</span>
           <span className="brand-name">YALLA Startup</span>
-        </a>
+        </Link>
         <nav aria-label="Primary navigation">
-          <a href="/sprint">Yalla Sprint</a>
+          <Link href="/">Home</Link>
+          <Link href="/sprint">Yalla Sprint</Link>
           <details className="nav-services">
             <summary>Advisory <ChevronDown aria-hidden="true" /></summary>
             <div className="nav-services-menu">
-              {services.map((service) => <a href={`/services/${service.slug}`} key={service.slug}><span>{service.number}</span>{service.title}</a>)}
+              {services.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}><span>{service.number}</span>{service.title}</Link>)}
             </div>
           </details>
-          <a href="/#outcomes">Outcomes</a>
-          <a href="/#founders">Founders</a>
+          <Link href="/#outcomes">Outcomes</Link>
+          <Link href="/#founders">Founders</Link>
         </nav>
         <div className="nav-actions">
-          <a className="button button-primary button-compact" href="/sprint#apply">
+          <Link className="button button-primary button-compact" href="/sprint#apply">
             Apply to Yalla Sprint <ArrowUpRight aria-hidden="true" />
-          </a>
-          <a className="button button-outline button-compact" href="/book">
+          </Link>
+          <Link className="button button-outline button-compact" href="/book">
             Book a call
-          </a>
+          </Link>
         </div>
         <button
           ref={menuButtonRef}
@@ -108,39 +110,39 @@ export default function SiteHeader() {
           aria-label="Mobile navigation"
         >
           <div className="mobile-menu-head">
-            <a className="brand" href="/" onClick={closeMobileMenu} aria-label="Yalla Startup Venture Studio home">
+            <Link className="brand" href="/" onClick={closeMobileMenu} aria-label="Yalla Startup Venture Studio home">
               <span className="brand-arabic">يلا</span>
               <span className="brand-name">YALLA Startup</span>
-            </a>
+            </Link>
             <button className="mobile-menu-close" type="button" aria-label="Close navigation menu" onClick={closeMobileMenu}>
               <X aria-hidden="true" />
             </button>
           </div>
 
           <nav className="mobile-menu-nav" aria-label="Mobile navigation">
-            <a href="/" onClick={closeMobileMenu}><span>01</span>Home</a>
-            <a href="/sprint" onClick={closeMobileMenu}><span>02</span>Yalla Sprint</a>
-            <a href="/#outcomes" onClick={closeMobileMenu}><span>03</span>Outcomes</a>
-            <a href="/#founders" onClick={closeMobileMenu}><span>04</span>Founders</a>
-            <a href="/book" onClick={closeMobileMenu}><span>05</span>Book a call</a>
+            <Link href="/" onClick={closeMobileMenu}>Home</Link>
+            <Link href="/sprint" onClick={closeMobileMenu}>Yalla Sprint</Link>
+            <Link href="/#outcomes" onClick={closeMobileMenu}>Outcomes</Link>
+            <Link href="/#founders" onClick={closeMobileMenu}>Founders</Link>
+            <Link href="/book" onClick={closeMobileMenu}>Book a call</Link>
           </nav>
 
           <div className="mobile-service-menu">
             <p>Advisory services</p>
             {services.map((service) => (
-              <a href={`/services/${service.slug}`} key={service.slug} onClick={closeMobileMenu}>
+              <Link href={`/services/${service.slug}`} key={service.slug} onClick={closeMobileMenu}>
                 <span>{service.number}</span>
                 <strong>{service.title}</strong>
                 <ArrowUpRight aria-hidden="true" />
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="mobile-menu-actions">
-            <a className="button button-primary" href="/sprint#apply" onClick={closeMobileMenu}>
+            <Link className="button button-primary" href="/sprint#apply" onClick={closeMobileMenu}>
               Apply to Yalla Sprint <ArrowUpRight aria-hidden="true" />
-            </a>
-            <a className="button button-outline" href="/book" onClick={closeMobileMenu}>Book a call</a>
+            </Link>
+            <Link className="button button-outline" href="/book" onClick={closeMobileMenu}>Book a call</Link>
           </div>
         </aside>
       </div>

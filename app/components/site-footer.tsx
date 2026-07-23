@@ -1,4 +1,5 @@
 import { ArrowUpRight, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
 import { contactDetails, services } from "../site-config";
 
 export default function SiteFooter() {
@@ -18,15 +19,15 @@ export default function SiteFooter() {
           <h2>Build with the studio.<br /><em>Or bring us into the business.</em></h2>
         </div>
         <div className="cta-pair">
-          <a className="button button-primary" href="/sprint#apply">Apply to Yalla Sprint <ArrowUpRight aria-hidden="true" /></a>
-          <a className="button button-outline" href="/book">Book a call</a>
+          <Link className="button button-primary" href="/sprint#apply">Apply to Yalla Sprint <ArrowUpRight aria-hidden="true" /></Link>
+          <Link className="button button-outline" href="/book">Book a call</Link>
         </div>
       </div>
       <div className="shell footer-inner">
-        <a className="brand footer-brand" href="/">
+        <Link className="brand footer-brand" href="/">
           <span className="brand-arabic">يلا</span>
           <span className="brand-name">YALLA Startup</span>
-        </a>
+        </Link>
         <div className="footer-contact">
           <p>Venture studio, founder programme and disciplined advisory for ambitious businesses.</p>
           <address>
@@ -39,7 +40,7 @@ export default function SiteFooter() {
         <nav className="footer-links" aria-label="Footer navigation">
           {linkColumns.map((column, columnIndex) => (
             <div className="footer-link-column" key={columnIndex}>
-              {column.map((link) => <a href={link.href} key={link.href}>{link.label}</a>)}
+              {column.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}
             </div>
           ))}
         </nav>

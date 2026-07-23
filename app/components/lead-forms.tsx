@@ -165,7 +165,7 @@ export function ResourceGateForm() {
   );
 }
 
-export function BookingRequestForm() {
+export function BookingRequestForm({ bookingUrl }: { bookingUrl?: string }) {
   const [state, setState] = useState<FormState>("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -174,10 +174,15 @@ export function BookingRequestForm() {
     setState("submitting");
     try {
       await submitLead("booking_request", form);
-      form.reset();
-      setState("success");
     } catch {
       setState("error");
+      return;
+    }
+
+    form.reset();
+    setState("success");
+    if (bookingUrl) {
+      window.location.assign(bookingUrl);
     }
   }
 

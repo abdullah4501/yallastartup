@@ -26,11 +26,7 @@ export default function BookPage() {
       </section>
       <section className="booking-section shell content-section">
         <div className="booking-panel">
-          {bookingUrl ? (
-            <iframe className="calendar-embed" src={bookingUrl} title="Book a call with Yalla Startup" loading="lazy" />
-          ) : (           
-            <BookingRequestForm />
-          )}
+          <BookingRequestForm bookingUrl={bookingUrl} />
         </div>
         <aside className="booking-aside">
           <h3>What to bring</h3>
