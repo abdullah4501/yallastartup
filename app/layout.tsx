@@ -1,39 +1,55 @@
-import type { Metadata } from "next";
-import { headers } from "next/headers";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { contactDetails, siteUrl } from "./site-config";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "yalla-startup.sites.openai.com";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const metadataBase = new URL(`${protocol}://${host}`);
-  const socialImage = new URL("/og.png", metadataBase).toString();
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: { default: "Yalla Startup Venture Studio", template: "%s | Yalla Startup" },
+  description: "Venture studio, founder cohort and disciplined advisory for ambitious companies in the United Arab Emirates and Saudi Arabia.",
+  applicationName: "Yalla Startup Venture Studio",
+  keywords: ["venture studio UAE", "startup programme UAE", "startup advisory Saudi Arabia", "founder cohort", "startup valuation", "virtual CFO UAE"],
+  category: "business",
+  robots: { index: true, follow: true },
+  openGraph: {
+    siteName: "Yalla Startup Venture Studio",
+    locale: "en_AE",
+    type: "website",
+    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "Yalla Startup Venture Studio" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og.png"] },
+};
 
-  return {
-    title: "Yalla Startup | Strategy, Finance & Fundraising for Startups",
-    description:
-      "UAE-based startup advisors for go-to-market strategy, business plans, valuations, pitch decks, fundraising support and virtual CFO services.",
-    metadataBase,
-    openGraph: {
-      title: "Yalla Startup — From big idea to investable",
-      description: "Strategy that moves. Numbers that hold up. A story investors remember.",
-      type: "website",
-      locale: "en_AE",
-      images: [{ url: socialImage, width: 1536, height: 1024, alt: "Yalla Startup — From big idea to investable" }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Yalla Startup — From big idea to investable",
-      description: "Strategy, finance and capital support for ambitious founders.",
-      images: [socialImage],
-    },
-  };
-}
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#071b1f" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Yalla Startup Venture Studio",
+    alternateName: "Yalla Startup",
+    url: siteUrl,
+    description: "Venture studio, founder cohort and advisory platform for ambitious companies.",
+    areaServed: ["United Arab Emirates", "Saudi Arabia"],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Silicon Oasis",
+      addressLocality: "Dubai",
+      addressCountry: "AE",
+    },
+    telephone: contactDetails.phones.map((phone) => phone.label),
+    founder: [
+      { "@type": "Person", name: "Nabeil Schaik" },
+      { "@type": "Person", name: "Moosa Raza" },
+    ],
+    sameAs: ["https://www.linkedin.com/in/nabeilschaik/", "https://www.linkedin.com/in/moosa-raza-aca-110m/"],
+  };
+
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" dir="ltr">
+      <body suppressHydrationWarning>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        {children}
+      </body>
     </html>
   );
 }

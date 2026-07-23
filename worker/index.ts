@@ -5,6 +5,9 @@ import handler from "vinext/server/app-router-entry";
 interface Env {
   ASSETS: Fetcher;
   DB: D1Database;
+  RESEND_API_KEY?: string;
+  FORM_NOTIFICATION_EMAIL?: string;
+  FORM_FROM_EMAIL?: string;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -27,6 +30,14 @@ interface ExecutionContext {
 
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    // Make the request-scoped database binding available to server route modules
+    // without importing the deployment-only `cloudflare:workers` virtual module.
+    (globalThis as typeof globalThis & { __YALLA_DB?: D1Database }).__YALLA_DB = env.DB;
+    (globalThis as typeof globalThis & { __YALLA_EMAIL_ENV?: Pick<Env, "RESEND_API_KEY" | "FORM_NOTIFICATION_EMAIL" | "FORM_FROM_EMAIL"> }).__YALLA_EMAIL_ENV = {
+      RESEND_API_KEY: env.RESEND_API_KEY,
+      FORM_NOTIFICATION_EMAIL: env.FORM_NOTIFICATION_EMAIL,
+      FORM_FROM_EMAIL: env.FORM_FROM_EMAIL,
+    };
     const url = new URL(request.url);
 
     if (url.pathname === "/_vinext/image") {

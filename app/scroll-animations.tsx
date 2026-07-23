@@ -11,6 +11,18 @@ const revealSelector = [
   ".hero-foot > *",
   ".section-heading > p",
   ".service-card",
+  ".pathway-card",
+  ".home-sprint-main",
+  ".home-sprint-terms",
+  ".sprint-mini-process > div",
+  ".outcome-card",
+  ".fit-card",
+  ".timeline-item",
+  ".after-apply-grid > article",
+  ".terms-grid > *",
+  ".service-price-card",
+  ".service-outcomes",
+  ".resource-layout > *",
   ".addon-card",
   ".step",
   ".founder-lead > p",
@@ -21,6 +33,16 @@ const revealSelector = [
 
 const staggerGroups = [
   ".service-card",
+  ".pathway-card",
+  ".home-sprint-main",
+  ".home-sprint-terms",
+  ".sprint-mini-process > div",
+  ".outcome-card",
+  ".fit-card",
+  ".timeline-item",
+  ".after-apply-grid > article",
+  ".terms-grid > *",
+  ".resource-layout > *",
   ".addon-card",
   ".step",
   ".founder-card",
@@ -107,7 +129,7 @@ export default function ScrollAnimations() {
           observer.unobserve(item);
         });
       },
-      { threshold: 0.14, rootMargin: "0px 0px -7% 0px" },
+      { threshold: 0.05, rootMargin: "0px 0px -3% 0px" },
     );
 
     revealItems.forEach((item) => observer.observe(item));

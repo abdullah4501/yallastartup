@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
-    "build:hostinger": "vite build --config vite.hostinger.config.ts --configLoader native",
+    "build:hostinger": "vinext build",
+    "build:hostinger-static": "vite build --config vite.hostinger.config.ts --configLoader native",
+    "start:hostinger": "node dist/standalone/server.js",
     "start": "vinext start",
     "test": "npm run build && node --test --test-isolation=none tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
