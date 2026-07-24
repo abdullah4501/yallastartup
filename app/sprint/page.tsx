@@ -64,7 +64,7 @@ export default function SprintPage() {
         </div>
         <div className="programme-deadline-card">
           <span className="programme-kicker">Application deadline</span>
-          <strong>31<br />July</strong>
+          <strong>31<br />August  </strong>
           <p>Limited founder cohort</p>
           <Countdown target={sprintConfig.applicationDeadline} label={sprintConfig.applicationDeadlineLabel} />
         </div>
