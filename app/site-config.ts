@@ -14,8 +14,7 @@ export const sprintConfig = {
   applicationDeadline: "2026-08-31T23:59:59+04:00",
   applicationDeadlineLabel: "31 August 2026",
   screeningDates: "3–7 September 2026",
-  programmeDates: "10 September–4 November 2026",
-  readinessReviewDate: "7 November 2026",
+  programmeDates: "10 September–10 December 2026",
   fee: "$1,200",
   successFee: "2% success fee",
   equity: "No equity",
@@ -91,7 +90,7 @@ export const outcomeCards = [
 
 export const credentialItems = [
   "Nabeil Schaik · Fellow Chartered Accountant",
-  "Moosa Raza · Chartered Accountant",
-  "20+ years across Big Four, banking and corporate finance",
-  "United Arab Emirates and Saudi Arabia · Confidential by default",
+  "Moosa Raza · Fellow Chartered Accountant",
+  "20+ years across Big Four, investment, banking and corporate finance",
+  "United Arab Emirates and Saudi Arabia",
 ] as const;

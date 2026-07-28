@@ -7,21 +7,61 @@ import { services } from "../site-config";
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLElement>(null);
+  const advisoryDropdownRef = useRef<HTMLDetailsElement>(null);
+
+  const closeAdvisoryDropdown = useCallback(() => {
+    if (advisoryDropdownRef.current) {
+      advisoryDropdownRef.current.open = false;
+    }
+  }, []);
 
   const closeMobileMenu = useCallback(() => {
     setMobileMenuOpen(false);
     window.requestAnimationFrame(() => menuButtonRef.current?.focus());
   }, []);
 
+  // Close advisory dropdown when clicking outside or pressing Escape
+  useEffect(() => {
+    const handlePointerDown = (event: PointerEvent) => {
+      const dropdown = advisoryDropdownRef.current;
+
+      if (
+        dropdown?.open &&
+        !dropdown.contains(event.target as Node)
+      ) {
+        closeAdvisoryDropdown();
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeAdvisoryDropdown();
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [closeAdvisoryDropdown]);
+
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     const drawer = drawerRef.current;
-    const focusable = drawer?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])");
+    const focusable = drawer?.querySelectorAll<HTMLElement>(
+      "a[href], button:not([disabled])"
+    );
+
     focusable?.[0]?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -29,10 +69,12 @@ export default function SiteHeader() {
         closeMobileMenu();
         return;
       }
+
       if (event.key !== "Tab" || !focusable?.length) return;
 
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
+
       if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
         last.focus();
@@ -43,11 +85,14 @@ export default function SiteHeader() {
     };
 
     const handleResize = () => {
-      if (window.innerWidth > 980) setMobileMenuOpen(false);
+      if (window.innerWidth > 980) {
+        setMobileMenuOpen(false);
+      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     window.addEventListener("resize", handleResize);
+
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
@@ -61,31 +106,77 @@ export default function SiteHeader() {
         <span>Yalla Startup · Venture Studio</span>
         <span>United Arab Emirates · Saudi Arabia</span>
       </div>
+
       <header className="nav shell">
-        <Link className="brand" href="/" aria-label="Yalla Startup Venture Studio home">
+        <Link
+          className="brand"
+          href="/"
+          aria-label="Yalla Startup Venture Studio home"
+        >
           <span className="brand-arabic">يلا</span>
           <span className="brand-name">YALLA Startup</span>
         </Link>
+
         <nav aria-label="Primary navigation">
-          <Link href="/">Home</Link>
-          <Link href="/sprint">Yalla Sprint</Link>
-          <details className="nav-services">
-            <summary>Advisory <ChevronDown aria-hidden="true" /></summary>
+          <Link href="/" onClick={closeAdvisoryDropdown}>
+            Home
+          </Link>
+
+          <Link href="/sprint" onClick={closeAdvisoryDropdown}>
+            Yalla Sprint
+          </Link>
+
+          <details
+            ref={advisoryDropdownRef}
+            className="nav-services"
+          >
+            <summary>
+              Advisory
+              <ChevronDown aria-hidden="true" />
+            </summary>
+
             <div className="nav-services-menu">
-              {services.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}><span>{service.number}</span>{service.title}</Link>)}
+              {services.map((service) => (
+                <Link
+                  href={`/services/${service.slug}`}
+                  key={service.slug}
+                  onClick={closeAdvisoryDropdown}
+                >
+                  <span>{service.number}</span>
+                  {service.title}
+                </Link>
+              ))}
             </div>
           </details>
-          <Link href="/#outcomes">Outcomes</Link>
-          <Link href="/#founders">Founders</Link>
-        </nav>
-        <div className="nav-actions">
-          <Link className="button button-primary button-compact" href="/sprint#apply">
-            Apply to Yalla Sprint <ArrowUpRight aria-hidden="true" />
+
+          <Link href="/#outcomes" onClick={closeAdvisoryDropdown}>
+            Outcomes
           </Link>
-          <Link className="button button-outline button-compact" href="/book">
+
+          <Link href="/#founders" onClick={closeAdvisoryDropdown}>
+            Founders
+          </Link>
+        </nav>
+
+        <div className="nav-actions">
+          <Link
+            className="button button-primary button-compact"
+            href="/sprint#apply"
+            onClick={closeAdvisoryDropdown}
+          >
+            Apply to Yalla Sprint
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
+
+          <Link
+            className="button button-outline button-compact"
+            href="/book"
+            onClick={closeAdvisoryDropdown}
+          >
             Book a call
           </Link>
         </div>
+
         <button
           ref={menuButtonRef}
           className="mobile-menu-toggle"
@@ -93,14 +184,26 @@ export default function SiteHeader() {
           aria-label="Open navigation menu"
           aria-controls="mobile-navigation"
           aria-expanded={mobileMenuOpen}
-          onClick={() => setMobileMenuOpen(true)}
+          onClick={() => {
+            closeAdvisoryDropdown();
+            setMobileMenuOpen(true);
+          }}
         >
           <Menu aria-hidden="true" />
         </button>
       </header>
 
-      <div className={`mobile-menu-layer${mobileMenuOpen ? " is-open" : ""}`} aria-hidden={!mobileMenuOpen}>
-        <button className="mobile-menu-backdrop" type="button" aria-label="Close navigation menu" onClick={closeMobileMenu} />
+      <div
+        className={`mobile-menu-layer${mobileMenuOpen ? " is-open" : ""}`}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <button
+          className="mobile-menu-backdrop"
+          type="button"
+          aria-label="Close navigation menu"
+          onClick={closeMobileMenu}
+        />
+
         <aside
           ref={drawerRef}
           className="mobile-menu-drawer"
@@ -110,27 +213,56 @@ export default function SiteHeader() {
           aria-label="Mobile navigation"
         >
           <div className="mobile-menu-head">
-            <Link className="brand" href="/" onClick={closeMobileMenu} aria-label="Yalla Startup Venture Studio home">
+            <Link
+              className="brand"
+              href="/"
+              onClick={closeMobileMenu}
+              aria-label="Yalla Startup Venture Studio home"
+            >
               <span className="brand-arabic">يلا</span>
               <span className="brand-name">YALLA Startup</span>
             </Link>
-            <button className="mobile-menu-close" type="button" aria-label="Close navigation menu" onClick={closeMobileMenu}>
+
+            <button
+              className="mobile-menu-close"
+              type="button"
+              aria-label="Close navigation menu"
+              onClick={closeMobileMenu}
+            >
               <X aria-hidden="true" />
             </button>
           </div>
 
-          <nav className="mobile-menu-nav" aria-label="Mobile navigation">
-            <Link href="/" onClick={closeMobileMenu}>Home</Link>
-            <Link href="/sprint" onClick={closeMobileMenu}>Yalla Sprint</Link>
-            <Link href="/#outcomes" onClick={closeMobileMenu}>Outcomes</Link>
-            <Link href="/#founders" onClick={closeMobileMenu}>Founders</Link>
-            <Link href="/book" onClick={closeMobileMenu}>Book a call</Link>
+          <nav
+            className="mobile-menu-nav"
+            aria-label="Mobile navigation"
+          >
+            <Link href="/" onClick={closeMobileMenu}>
+              Home
+            </Link>
+            <Link href="/sprint" onClick={closeMobileMenu}>
+              Yalla Sprint
+            </Link>
+            <Link href="/#outcomes" onClick={closeMobileMenu}>
+              Outcomes
+            </Link>
+            <Link href="/#founders" onClick={closeMobileMenu}>
+              Founders
+            </Link>
+            <Link href="/book" onClick={closeMobileMenu}>
+              Book a call
+            </Link>
           </nav>
 
           <div className="mobile-service-menu">
             <p>Advisory services</p>
+
             {services.map((service) => (
-              <Link href={`/services/${service.slug}`} key={service.slug} onClick={closeMobileMenu}>
+              <Link
+                href={`/services/${service.slug}`}
+                key={service.slug}
+                onClick={closeMobileMenu}
+              >
                 <span>{service.number}</span>
                 <strong>{service.title}</strong>
                 <ArrowUpRight aria-hidden="true" />
@@ -139,10 +271,22 @@ export default function SiteHeader() {
           </div>
 
           <div className="mobile-menu-actions">
-            <Link className="button button-primary" href="/sprint#apply" onClick={closeMobileMenu}>
-              Apply to Yalla Sprint <ArrowUpRight aria-hidden="true" />
+            <Link
+              className="button button-primary"
+              href="/sprint#apply"
+              onClick={closeMobileMenu}
+            >
+              Apply to Yalla Sprint
+              <ArrowUpRight aria-hidden="true" />
             </Link>
-            <Link className="button button-outline" href="/book" onClick={closeMobileMenu}>Book a call</Link>
+
+            <Link
+              className="button button-outline"
+              href="/book"
+              onClick={closeMobileMenu}
+            >
+              Book a call
+            </Link>
           </div>
         </aside>
       </div>

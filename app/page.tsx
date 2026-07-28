@@ -53,12 +53,12 @@ export default function Home() {
 
         <div className="hero-stage" aria-label="Yalla process from diagnosis to scale">
           <div className="stage-orbit orbit-one" /><div className="stage-orbit orbit-two" />
-          <div className="stage-core-rotator"><div className="stage-core"><span className="stage-kicker">YALLA / UAE / KSA</span><strong>Idea</strong><ArrowDownRight className="stage-arrow" aria-hidden="true" /><strong>Scale</strong></div></div>
+          <div className="stage-core-rotator"><div className="stage-core"><strong>Idea</strong><ArrowDownRight className="stage-arrow" aria-hidden="true" /><strong>Scale</strong></div></div>
           <div className="stage-chip chip-one"><span>01</span> Diagnose</div><div className="stage-chip chip-two"><span>02</span> Build</div><div className="stage-chip chip-three"><span>03</span> Ready</div><div className="stage-chip chip-four"><span>04</span> Scale</div>
           <div className="stage-stamp">MOVE<br />FORWARD<br /><b>يلا</b></div>
         </div>
 
-        <div className="hero-foot"><p>United Arab Emirates.<br />Saudi Arabia.</p><p>Founder thinking.<br />CFO discipline.</p><div className="scroll-cue"><i><ArrowDownRight aria-hidden="true" /></i></div></div>
+        <div className="hero-foot"><p>Founder thinking. CFO discipline.</p></div>
       </section>
 
       <section className="credential-strip" aria-label="Founder credentials">
@@ -81,7 +81,7 @@ export default function Home() {
             <aside className="home-sprint-terms">
               <span className="pathway-label">Terms and dates</span>
               <strong>{sprintConfig.fee}</strong>
-              <p>{sprintConfig.successFee} · {sprintConfig.equity}</p>
+              <p>{sprintConfig.equity}</p>
               <dl><div><dt>Applications close</dt><dd>{sprintConfig.applicationDeadlineLabel}</dd></div><div><dt>Programme</dt><dd>{sprintConfig.programmeDates}</dd></div></dl>
               <a className="button button-dark" href="/sprint#apply">Apply to Yalla Sprint <ArrowUpRight aria-hidden="true" /></a>
               <a className="card-link" href="/sprint">Read the full programme</a>

@@ -22,7 +22,6 @@ const timeline = [
   ["Applications close", sprintConfig.applicationDeadlineLabel],
   ["Screening calls", sprintConfig.screeningDates],
   ["Yalla Sprint", sprintConfig.programmeDates],
-  ["Readiness review", sprintConfig.readinessReviewDate],
 ] as const;
 
 const afterApplying = [
@@ -55,7 +54,7 @@ export default function SprintPage() {
       <section className="programme-hero shell">
         <div className="programme-hero-copy">
           <p className="eyebrow"><span /> Applications close {sprintConfig.applicationDeadlineLabel}</p>
-          <h1>Four focused weeks.<br /><em>One investable business.</em></h1>
+          <h1>Three focused months.<br /><em>One investable business.</em></h1>
           <p className="hero-intro">Yalla Sprint is a founder cohort for companies that need sharper strategy, stronger numbers and a story that can survive investor scrutiny. You do the work with us—not around us.</p>
           <div className="cta-pair">
             <a className="button button-primary" href="#apply">Apply to Yalla Sprint <ArrowDown aria-hidden="true" /></a>
@@ -117,7 +116,8 @@ export default function SprintPage() {
         <div className="shell split-panel">
           <div>
             <p className="eyebrow"><span /> Terms, plainly</p>
-            <h2>{sprintConfig.fee}<br /><em>plus success.</em></h2>
+            <h2>{sprintConfig.fee}<br /><em>No Equity.</em> <br /> <em>2% Success Fee.</em></h2>
+          
           </div>
           <div className="plain-terms">
             <p><ShieldCheck aria-hidden="true" /> <span><strong>Programme fee.</strong> The {sprintConfig.fee} fee is invoiced only after written acceptance and is payable in full before onboarding. Applying is free.</span></p>

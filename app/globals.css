@@ -266,8 +266,8 @@ h1 em::after {
   min-height: 80px;
   border-top: 1px solid rgba(255,255,255,.14);
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
   align-items: center;
+  justify-content: center;
 }
 .hero-foot p { margin: 0; color: rgba(255,255,255, 1); font-size: 12px; font-weight: 700; line-height: 1.5; text-transform: uppercase; letter-spacing: .12em; }
 .scroll-cue { display: flex; align-items: center; gap: 18px; color: rgba(255,255,255,.5); font-size: 10px; text-transform: uppercase; letter-spacing: .14em; }
@@ -753,7 +753,7 @@ section[id] { scroll-margin-top: 118px; }
 .home-sprint-terms { min-height: 520px; padding: 46px; background: var(--lime); color: var(--ink); display: flex; flex-direction: column; align-items: flex-start; }
 .home-sprint-terms .pathway-label { color: var(--ink); }
 .home-sprint-terms > strong { margin: auto 0 10px; font: 400 clamp(50px,5vw,70px)/.9 var(--font-display); letter-spacing: -.055em; }
-.home-sprint-terms > p { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; }
+.home-sprint-terms > p { font: 400 clamp(20px,2vw,50px)/.9 var(--font-display); text-transform: uppercase; letter-spacing: -.055em; }
 .home-sprint-terms dl { width: 100%; margin: 20px 0 28px; border-top: 1px solid rgba(7,27,31,.22); }
 .home-sprint-terms dl div { padding: 13px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border-bottom: 1px solid rgba(7,27,31,.22); }
 .home-sprint-terms dt { font-size: 9px; font-weight: 900; text-transform: uppercase; }
@@ -842,10 +842,9 @@ section[id] { scroll-margin-top: 118px; }
 .terms-strip { background: var(--coral); color: var(--ink); }
 .terms-grid { display: grid; grid-template-columns: repeat(4,1fr); }
 .terms-grid > div { min-height: 120px; padding: 25px; border-inline-end: 1px solid rgba(7,27,31,.22); display: flex; flex-direction: column; justify-content: center; }
-.terms-grid > div:first-child { padding-inline-start: 0; }
 .terms-grid > div:last-child { border: 0; }
-.terms-grid span { margin-bottom: 11px; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
-.terms-grid strong { font: 400 24px/1 var(--font-display); }
+.terms-grid span { margin-bottom: 11px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.terms-grid strong { font: 400 16px/1 var(--font-display); }
 .fit-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
 .fit-card { padding: 24px; display: grid; grid-template-columns: auto 1fr; gap: 14px; background: var(--white); border: 1px solid var(--line); }
 .fit-card svg { width: 18px; height: 18px; color: var(--ink); }
