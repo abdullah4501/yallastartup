@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { services } from "../site-config";
+import BrandLogo from "./brand-logo";
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -113,8 +114,7 @@ export default function SiteHeader() {
           href="/"
           aria-label="Yalla Startup Venture Studio home"
         >
-          <span className="brand-arabic">يلا</span>
-          <span className="brand-name">YALLA Startup</span>
+          <BrandLogo priority />
         </Link>
 
         <nav aria-label="Primary navigation">
@@ -219,8 +219,7 @@ export default function SiteHeader() {
               onClick={closeMobileMenu}
               aria-label="Yalla Startup Venture Studio home"
             >
-              <span className="brand-arabic">يلا</span>
-              <span className="brand-name">YALLA Startup</span>
+              <BrandLogo />
             </Link>
 
             <button

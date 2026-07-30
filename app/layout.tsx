@@ -47,9 +47,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" dir="ltr">
       <head>
-        <link rel="icon" href="/favicon.png?v=20260723" type="image/png" />
-        <link rel="shortcut icon" href="/favicon.png?v=20260723" type="image/png" />
-        <link rel="apple-touch-icon" href="/favicon.png?v=20260723" />
+        <link rel="icon" href="/favicon.png?v=20260730" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.png?v=20260730" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png?v=20260730" />
       </head>
       <body suppressHydrationWarning>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />

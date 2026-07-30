@@ -1,6 +1,7 @@
 import { ArrowUpRight, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { contactDetails, services } from "../site-config";
+import BrandLogo from "./brand-logo";
 
 export default function SiteFooter() {
   const footerLinks = [
@@ -24,9 +25,8 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="shell footer-inner">
-        <Link className="brand footer-brand" href="/">
-          <span className="brand-arabic">يلا</span>
-          <span className="brand-name">YALLA Startup</span>
+        <Link className="brand footer-brand" href="/" aria-label="Yalla Startup Venture Studio home">
+          <BrandLogo />
         </Link>
         <div className="footer-contact">
           <p>Venture studio, founder programme and disciplined advisory for ambitious businesses.</p>

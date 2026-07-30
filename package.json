@@ -11,8 +11,7 @@
     "build:hostinger": "vinext build",
     "start:hostinger": "node dist/standalone/server.js",
     "start": "vinext start",
-    "test": "npm run build && node --test --test-isolation=none tests/rendered-html.test.mjs",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
+    "test": "npm run build && node --test --test-isolation=none tests/rendered-html.test.mjs"
   },
   "dependencies": {
     "lucide-react": "1.26.0",
@@ -26,8 +25,6 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.30",
-    "eslint": "9.39.5",
-    "eslint-config-next": "16.2.11",
     "react-server-dom-webpack": "19.2.8",
     "typescript": "5.9.3",
     "vinext": "0.0.50",
