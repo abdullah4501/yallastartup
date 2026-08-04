@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const service = services.find((item) => item.slug === slug);
   if (!service) return {};
   return {
-    title: { absolute: `${service.title} | Yalla Startup Venture Studio` },
+    title: { absolute: `${service.title} | Yalla Startup Venture Advisory` },
     description: `${service.description} Typical investment: ${service.price}.`,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: { title: `${service.title} | Yalla Startup`, description: service.description, type: "website" },
@@ -34,7 +34,7 @@ export default async function ServicePage({ params }: PageProps) {
     "@type": "Service",
     name: service.title,
     description: service.description,
-    provider: { "@type": "Organization", name: "Yalla Startup Venture Studio" },
+    provider: { "@type": "Organization", name: "Yalla Startup Venture Advisory" },
     areaServed: ["United Arab Emirates", "Saudi Arabia"],
     offers: { "@type": "Offer", priceSpecification: { "@type": "PriceSpecification", priceCurrency: "AED", description: service.price } },
   };

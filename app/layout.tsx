@@ -4,17 +4,17 @@ import { contactDetails, siteUrl } from "./site-config";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: "Yalla Startup Venture Studio", template: "%s | Yalla Startup" },
-  description: "Venture studio, founder cohort and disciplined advisory for ambitious companies in the United Arab Emirates and Saudi Arabia.",
-  applicationName: "Yalla Startup Venture Studio",
-  keywords: ["venture studio UAE", "startup programme UAE", "startup advisory Saudi Arabia", "founder cohort", "startup valuation", "virtual CFO UAE"],
+  title: { default: "Yalla Startup Venture Advisory", template: "%s | Yalla Startup" },
+  description: "Venture advisory, founder cohort and disciplined advisory for ambitious companies in the United Arab Emirates and Saudi Arabia.",
+  applicationName: "Yalla Startup Venture Advisory",
+  keywords: ["venture advisory UAE", "startup programme UAE", "startup advisory Saudi Arabia", "founder cohort", "startup valuation", "virtual CFO UAE"],
   category: "business",
   robots: { index: true, follow: true },
   openGraph: {
-    siteName: "Yalla Startup Venture Studio",
+    siteName: "Yalla Startup Venture Advisory",
     locale: "en_AE",
     type: "website",
-    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "Yalla Startup Venture Studio" }],
+    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "Yalla Startup Venture Advisory" }],
   },
   twitter: { card: "summary_large_image", images: ["/og.png"] },
 };
@@ -25,10 +25,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Yalla Startup Venture Studio",
+    name: "Yalla Startup Venture Advisory",
     alternateName: "Yalla Startup",
     url: siteUrl,
-    description: "Venture studio, founder cohort and advisory platform for ambitious companies.",
+    description: "Venture advisory, founder cohort and advisory platform for ambitious companies.",
     areaServed: ["United Arab Emirates", "Saudi Arabia"],
     address: {
       "@type": "PostalAddress",

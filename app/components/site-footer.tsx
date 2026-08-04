@@ -25,11 +25,11 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="shell footer-inner">
-        <Link className="brand footer-brand" href="/" aria-label="Yalla Startup Venture Studio home">
+        <Link className="brand footer-brand" href="/" aria-label="Yalla Startup Venture Advisory home">
           <BrandLogo />
         </Link>
         <div className="footer-contact">
-          <p>Venture studio, founder programme and disciplined advisory for ambitious businesses.</p>
+          <p>Venture advisory, founder cohort and disciplined advisory for ambitious businesses.</p>
           <address>
             <span><MapPin aria-hidden="true" /> {contactDetails.address}</span>
             {contactDetails.phones.map((phone) => (

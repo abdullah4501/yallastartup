@@ -104,7 +104,7 @@ export default function SiteHeader() {
   return (
     <>
       <div className="topline">
-        <span>Yalla Startup · Venture Studio</span>
+        <span>Yalla Startup · Venture Advisory</span>
         <span>United Arab Emirates · Saudi Arabia</span>
       </div>
 
@@ -112,7 +112,7 @@ export default function SiteHeader() {
         <Link
           className="brand"
           href="/"
-          aria-label="Yalla Startup Venture Studio home"
+          aria-label="Yalla Startup Venture Advisory home"
         >
           <BrandLogo priority />
         </Link>

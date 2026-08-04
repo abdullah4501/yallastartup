@@ -7,7 +7,7 @@ import ScrollAnimations from "../scroll-animations";
 import { contactDetails } from "../site-config";
 
 export const metadata: Metadata = {
-  title: { absolute: "Book a Call | Yalla Startup Venture Studio" },
+  title: { absolute: "Book a Call | Yalla Startup Venture Advisory" },
   description: "Book a focused call with Yalla Startup about the Sprint, strategy, finance, valuation, pitch narrative or virtual CFO support.",
   alternates: { canonical: "/book" },
 };

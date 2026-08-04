@@ -58,8 +58,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .brand { display: inline-flex; align-items: center; gap: 10px; width: fit-content; position: relative; }
 .brand-logo-mark {
-  width: 48px;
-  height: 46px;
+  width: 60px;
+  height: auto;
   flex: 0 0 auto;
   display: grid;
   place-items: center;
@@ -300,6 +300,116 @@ h1 em::after {
 .signal-strip:hover .marquee-track { animation-play-state: paused; }
 @keyframes marquee-roll { to { transform: translateX(-50%); } }
 
+.advisory-services-preview {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+}
+.advisory-services-preview::before {
+  content: "";
+  position: absolute;
+  top: -220px;
+  right: -180px;
+  width: 520px;
+  height: 520px;
+  border: 1px solid rgba(7,27,31,.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.advisory-services-preview .shell { position: relative; z-index: 1; }
+.advisory-services-heading h2 em { color: var(--coral); }
+.advisory-services-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+.advisory-service-card {
+  grid-column: span 4;
+  min-height: 330px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  color: var(--ink);
+  background: rgba(255,255,255,.52);
+  border: 1px solid var(--line);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), background .35s ease, color .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.advisory-service-card:nth-child(4),
+.advisory-service-card:nth-child(5) { grid-column: span 6; }
+.advisory-service-card::before {
+  content: "";
+  position: absolute;
+  right: -85px;
+  bottom: -100px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(216,255,62,.28);
+  border-radius: 50%;
+  transform: scale(.55);
+  opacity: 0;
+  transition: transform .4s ease, opacity .4s ease;
+}
+.advisory-service-number {
+  font: 400 25px/1 var(--font-display);
+}
+.advisory-service-arrow {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transition: transform .3s ease, background .3s ease, color .3s ease;
+}
+.advisory-service-arrow svg { width: 18px; height: 18px; stroke-width: 2; }
+.advisory-service-content { margin-top: auto; position: relative; z-index: 1; }
+.advisory-service-content > p {
+  margin: 0 0 14px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.advisory-service-content h3 {
+  margin: 0 0 17px;
+  font: 400 clamp(31px,3vw,43px)/.98 var(--font-display);
+  letter-spacing: -.04em;
+}
+.advisory-service-content > span {
+  display: block;
+  max-width: 480px;
+  color: rgba(7,27,31,.62);
+  font-size: 12px;
+  line-height: 1.7;
+  transition: color .35s ease;
+}
+.advisory-service-card:hover,
+.advisory-service-card:focus-visible {
+  transform: translateY(-8px);
+  color: var(--white);
+  background: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 0 24px 55px rgba(7,27,31,.18);
+}
+.advisory-service-card:hover::before,
+.advisory-service-card:focus-visible::before { transform: scale(1); opacity: 1; }
+.advisory-service-card:hover .advisory-service-arrow,
+.advisory-service-card:focus-visible .advisory-service-arrow {
+  transform: rotate(45deg);
+  color: var(--ink);
+  background: var(--lime);
+  border-color: var(--lime);
+}
+.advisory-service-card:hover .advisory-service-content > p,
+.advisory-service-card:focus-visible .advisory-service-content > p { color: var(--lime); }
+.advisory-service-card:hover .advisory-service-content > span,
+.advisory-service-card:focus-visible .advisory-service-content > span { color: rgba(255,255,255,.68); }
+
 .services-section { padding: 130px 0 120px; }
 .section-heading { display: grid; grid-template-columns: 1.45fr .55fr; gap: 80px; align-items: end; margin-bottom: 64px; }
 .section-heading h2, .addon-intro h2, .founder-lead h2, .contact-content h2 { margin: 0; font-size: clamp(50px, 5.4vw, 76px); line-height: .94; }
@@ -384,7 +494,7 @@ h1 em::after {
 .footer { background: #041316; padding: 60px 0 45px; }
 .footer-inner { display: grid; grid-template-columns: 1fr 1.15fr 1.2fr .8fr; gap: 40px; align-items: start; }
 .footer-brand { align-items: center; }
-.footer-brand .brand-logo-mark { width: 54px; height: 51px; }
+.footer-brand .brand-logo-mark { width: 54px; height: auto; }
 .footer-inner > p { color: rgba(255,255,255,1); font-size: 11px; line-height: 1.7; }
 .footer-contact > p { margin: 0; color: rgba(255,255,255,.72); font-size: 11px; line-height: 1.7; }
 .footer-contact address { display: grid; gap: 9px; margin-top: 18px; font-style: normal; font-size: 11px; line-height: 1.5; }
@@ -580,7 +690,7 @@ h1 em::after {
   .mobile-menu-layer.is-open .mobile-menu-drawer { transform: translateX(0); }
   .mobile-menu-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 23px; border-bottom: 1px solid rgba(255,255,255,.14); }
   .mobile-menu-head .brand { gap: 8px; }
-  .mobile-menu-head .brand-logo-mark { width: 42px; height: 40px; border-radius: 4px; }
+  .mobile-menu-head .brand-logo-mark { width: 46px; height: auto; border-radius: 4px; }
   .mobile-menu-head .brand-name { font-size: 16px; }
   .mobile-menu-head .brand-name small { display: block; margin-top: 3px; font-size: 8px; }
   .mobile-menu-close {
@@ -656,6 +766,8 @@ h1 em::after {
   .hero-foot { grid-template-columns: 1fr 1fr; min-height: 74px; }
   .scroll-cue { display: none; }
   .marquee-item { min-height: 70px; padding-right: 34px; gap: 34px; font-size: 19px; }
+  .advisory-service-card { grid-column: span 6; }
+  .advisory-service-card:nth-child(5) { grid-column: 4 / span 6; }
   .services-section { padding: 90px 0; }
   .section-heading h2, .addon-intro h2, .founder-lead h2 { font-size: 49px; }
   .service-grid { grid-template-columns: 1fr; }
@@ -965,6 +1077,11 @@ html[dir="rtl"] .inline-icon, html[dir="rtl"] .button svg { transform: scaleX(-1
   .pathway-card h3 { font-size: 50px; }
   .outcome-card { min-height: 220px; padding: 25px; gap: 16px; }
   .outcome-card p { font-size: 25px; }
+  .advisory-services-grid { grid-template-columns: 1fr; }
+  .advisory-service-card,
+  .advisory-service-card:nth-child(4),
+  .advisory-service-card:nth-child(5) { grid-column: auto; min-height: 285px; padding: 24px; }
+  .advisory-service-arrow { top: 20px; right: 20px; width: 42px; height: 42px; }
   .service-card:nth-child(5) { grid-column: auto; }
   .resource-section { padding: 82px 0; }
   .resource-layout { gap: 45px; }

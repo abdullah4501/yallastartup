@@ -8,11 +8,11 @@ import ScrollAnimations from "./scroll-animations";
 import { contactDetails, credentialItems, outcomeCards, processSteps, services, siteUrl, sprintConfig } from "./site-config";
 
 export const metadata: Metadata = {
-  title: { absolute: "Yalla Startup Venture Studio | Founder Cohort and Advisory" },
-  description: "Yalla Startup is a venture studio, founder cohort and advisory platform helping ambitious companies in the United Arab Emirates and Saudi Arabia become commercially and investor ready.",
+  title: { absolute: "Yalla Startup Venture Advisory | Founder Cohort and Advisory" },
+  description: "Yalla Startup is a venture advisory, founder cohort and disciplined advisory platform helping ambitious companies in the United Arab Emirates and Saudi Arabia become commercially and investor ready.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Yalla Startup Venture Studio | From big ideas to investable",
+    title: "Yalla Startup Venture Advisory | From big ideas to investable",
     description: "Yalla Sprint and disciplined advisory for founders in the United Arab Emirates, Saudi Arabia and beyond.",
     type: "website",
   },
@@ -24,10 +24,10 @@ export default function Home() {
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Yalla Startup Venture Studio",
+    name: "Yalla Startup Venture Advisory",
     alternateName: "Yalla Startup",
     url: siteUrl,
-    description: "Venture studio, founder cohort and advisory platform for ambitious companies in the United Arab Emirates and Saudi Arabia.",
+    description: "Venture advisory, founder cohort and disciplined advisory for ambitious companies in the United Arab Emirates and Saudi Arabia.",
   };
 
   return (
@@ -38,13 +38,10 @@ export default function Home() {
 
       <section className="hero shell" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> Venture studio + founder cohort</p>
-          <h1><span className="hero-title-line">From big ideas</span><span className="hero-title-line">to <em>investable.</em></span></h1>
+          <p className="eyebrow"><span /> Venture advisory + founder cohort</p>
+          <h1><span className="hero-title-line">Big ideas.</span><span className="hero-title-line"> <em>Investable</em> businesses</span></h1>
           <p className="hero-intro">Build through Yalla Sprint, or bring our strategy and finance team into a specific business challenge. Two clear paths from potential to a business ready for market, capital and scale.</p>
-          <div className="hero-actions cta-pair">
-            <a className="button button-primary" href="/sprint#apply">Apply to Yalla Sprint <ArrowUpRight aria-hidden="true" /></a>
-            <a className="button button-outline" href="/book">Book a call</a>
-          </div>
+          
           <div className="hero-deadline-strip">
             <div><span>Applications close</span><strong>{sprintConfig.applicationDeadlineLabel}</strong></div>
             <Countdown target={sprintConfig.applicationDeadline} label={sprintConfig.applicationDeadlineLabel} />
@@ -64,6 +61,7 @@ export default function Home() {
       <section className="credential-strip" aria-label="Founder credentials">
         <div className="shell credential-grid">{credentialItems.map((item, index) => <div key={item}><span>0{index + 1}</span><p>{item}</p></div>)}</div>
       </section>
+
 
       <section className="home-sprint-section content-section" id="sprint">
         <div className="shell">

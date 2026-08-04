@@ -8,7 +8,7 @@ import ScrollAnimations from "../scroll-animations";
 import { processSteps, siteUrl, sprintConfig } from "../site-config";
 
 export const metadata: Metadata = {
-  title: { absolute: "Yalla Sprint | Founder Cohort by Yalla Startup Venture Studio" },
+  title: { absolute: "Yalla Sprint | Founder Cohort by Yalla Startup Venture Advisory" },
   description: "Apply to Yalla Sprint: a focused founder cohort moving companies from diagnosis to investor readiness and scale. AED 1,200, 2% success fee, no equity.",
   alternates: { canonical: "/sprint" },
   openGraph: {
@@ -37,7 +37,7 @@ export default function SprintPage() {
     "@type": "EducationalOccupationalProgram",
     name: sprintConfig.name,
     description: sprintConfig.descriptor,
-    provider: { "@type": "Organization", name: "Yalla Startup Venture Studio", url: siteUrl },
+    provider: { "@type": "Organization", name: "Yalla Startup Venture Advisory", url: siteUrl },
     applicationDeadline: "2026-07-31",
     startDate: "2026-08-10",
     endDate: "2026-09-04",
